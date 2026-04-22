@@ -1,0 +1,47 @@
+<h2>Arquitectura — SuperQR</h2>
+<p class="subtitle">Visión general del sistema</p>
+
+<div class="section">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
+      <div style="font-size:28px;margin-bottom:8px">🖥️</div>
+      <h3 style="margin:0 0 8px">Frontend</h3>
+      <p style="margin:0;font-size:13px;color:var(--text-secondary)">Next.js App Router<br>React + Tailwind CSS<br>qr-code-styling</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
+      <div style="font-size:28px;margin-bottom:8px">⚙️</div>
+      <h3 style="margin:0 0 8px">Backend</h3>
+      <p style="margin:0;font-size:13px;color:var(--text-secondary)">Next.js API Routes<br>Server Actions<br>Supabase SDK</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
+      <div style="font-size:28px;margin-bottom:8px">🗄️</div>
+      <h3 style="margin:0 0 8px">Supabase</h3>
+      <p style="margin:0;font-size:13px;color:var(--text-secondary)">Auth (magic link/OAuth)<br>PostgreSQL<br>Row Level Security</p>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px">
+    <h3 style="margin:0 0 12px">Flujo principal</h3>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px">
+      <div style="background:#4f46e5;color:#fff;padding:6px 12px;border-radius:6px">Usuario crea QR</div>
+      <div style="color:var(--text-secondary)">→</div>
+      <div style="background:#0891b2;color:#fff;padding:6px 12px;border-radius:6px">Se genera short-link<br><code style="font-size:11px">superqr.app/r/abc123</code></div>
+      <div style="color:var(--text-secondary)">→</div>
+      <div style="background:#16a34a;color:#fff;padding:6px 12px;border-radius:6px">QR apunta al short-link</div>
+      <div style="color:var(--text-secondary)">→</div>
+      <div style="background:#dc2626;color:#fff;padding:6px 12px;border-radius:6px">Escaneo → registro en DB → redirect</div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px">
+    <h3 style="margin:0 0 12px">Páginas principales</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px">
+      <div style="padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid var(--border)">📋 <strong>/dashboard</strong> — lista de QR codes</div>
+      <div style="padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid var(--border)">✨ <strong>/create</strong> — crear nuevo QR</div>
+      <div style="padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid var(--border)">✏️ <strong>/qr/[id]</strong> — editar QR existente</div>
+      <div style="padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid var(--border)">📊 <strong>/qr/[id]/stats</strong> — analytics</div>
+      <div style="padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid var(--border)">🔀 <strong>/r/[slug]</strong> — redirect (público)</div>
+      <div style="padding:8px 12px;background:#f8fafc;border-radius:6px;border:1px solid var(--border)">🔐 <strong>/login</strong> — autenticación</div>
+    </div>
+  </div>
+</div>

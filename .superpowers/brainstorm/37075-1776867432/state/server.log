@@ -1,0 +1,31 @@
+{"type":"server-started","port":64655,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:64655","screen_dir":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content","state_dir":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/state"}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/qr-customization.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/qr-customization.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/qr-customization.html"}
+{"source":"user-event","type":"click","text":"B\n    \n      Colores personalizados\n      Elegir color de primer plano y fondo. Ideal para branding básico.","choice":"b","id":null,"timestamp":1776868783168}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/waiting-1.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/waiting-1.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/waiting-1.html"}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/architecture.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/architecture.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/architecture.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/architecture.html"}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model.html"}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model-v2.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model-v2.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model-v2.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model-v2.html"}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model-v3.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model-v3.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/data-model-v3.html"}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/mockup-dashboard.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/mockup-dashboard.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/mockup-dashboard.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/mockup-dashboard.html"}
+{"type":"screen-added","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/mockup-creator.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/mockup-creator.html"}
+{"type":"screen-updated","file":"/Users/onejensen/Documents/MIS APPS/SuperQR/.superpowers/brainstorm/37075-1776867432/content/mockup-creator.html"}
+{"type":"server-stopped","reason":"idle timeout"}

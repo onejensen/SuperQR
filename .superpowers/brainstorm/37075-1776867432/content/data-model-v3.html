@@ -1,0 +1,71 @@
+<h2>Tipos de Destino — Lista Final</h2>
+<p class="subtitle">10 tipos soportados</p>
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;font-size:13px">
+
+  <div style="padding:12px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">🌐</div>
+    <div style="font-weight:600;margin-bottom:2px">url</div>
+    <code style="font-size:10px;color:#0369a1">https://...</code>
+  </div>
+
+  <div style="padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">📞</div>
+    <div style="font-weight:600;margin-bottom:2px">phone</div>
+    <code style="font-size:10px;color:#15803d">tel:+506...</code>
+  </div>
+
+  <div style="padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">💬</div>
+    <div style="font-weight:600;margin-bottom:2px">whatsapp</div>
+    <code style="font-size:10px;color:#15803d">wa.me/...</code>
+  </div>
+
+  <div style="padding:12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">✉️</div>
+    <div style="font-weight:600;margin-bottom:2px">email</div>
+    <code style="font-size:10px;color:#c2410c">mailto:...</code>
+  </div>
+
+  <div style="padding:12px;background:#fdf4ff;border:1px solid #e9d5ff;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">📸</div>
+    <div style="font-weight:600;margin-bottom:2px">instagram</div>
+    <code style="font-size:10px;color:#7c3aed">@usuario</code>
+  </div>
+
+  <div style="padding:12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">𝕏</div>
+    <div style="font-weight:600;margin-bottom:2px">twitter</div>
+    <code style="font-size:10px;color:#1d4ed8">@usuario</code>
+  </div>
+
+  <div style="padding:12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">💼</div>
+    <div style="font-weight:600;margin-bottom:2px">linkedin</div>
+    <code style="font-size:10px;color:#1d4ed8">usuario</code>
+  </div>
+
+  <div style="padding:12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">🎵</div>
+    <div style="font-weight:600;margin-bottom:2px">tiktok</div>
+    <code style="font-size:10px;color:#be123c">@usuario</code>
+  </div>
+
+  <div style="padding:12px;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">📘</div>
+    <div style="font-weight:600;margin-bottom:2px">facebook</div>
+    <code style="font-size:10px;color:#dc2626">fb.com/usuario</code>
+  </div>
+
+  <div style="padding:12px;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;text-align:center">
+    <div style="font-size:20px;margin-bottom:4px">▶️</div>
+    <div style="font-weight:600;margin-bottom:2px">youtube</div>
+    <code style="font-size:10px;color:#dc2626">@canal</code>
+  </div>
+
+</div>
+
+<div style="margin-top:20px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;font-size:13px">
+  <strong>En la base de datos:</strong> <code>destination_type = 'tiktok'</code> + <code>destination_value = 'miusuario'</code><br>
+  <span style="color:var(--text-secondary)">El servidor construye → <code>https://tiktok.com/@miusuario</code> al momento del redirect</span>
+</div>

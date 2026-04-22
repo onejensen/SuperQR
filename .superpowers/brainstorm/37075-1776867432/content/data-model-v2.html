@@ -1,0 +1,80 @@
+<h2>Modelo de Datos — v2</h2>
+<p class="subtitle">Con soporte para múltiples tipos de destino</p>
+
+<div class="section" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+
+  <div style="background:var(--surface);border:2px solid #0891b2;border-radius:12px;padding:20px;grid-column:1/-1">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <span style="font-size:18px">📱</span>
+      <h3 style="margin:0;color:#0891b2">qr_codes</h3>
+      <span style="font-size:11px;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:10px;margin-left:auto">campos actualizados</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;font-size:12px;font-family:monospace">
+      <div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span style="color:#0891b2">id</span><span style="color:var(--text-secondary)">uuid PK</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span style="color:#4f46e5">user_id</span><span style="color:var(--text-secondary)">uuid FK</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span>name</span><span style="color:var(--text-secondary)">text</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span>slug</span><span style="color:var(--text-secondary)">text UNIQUE</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);background:#fef9c3;padding:5px 6px;border-radius:4px;margin-bottom:2px"><span style="color:#d97706">destination_type</span><span style="color:var(--text-secondary)">text</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);background:#fef9c3;padding:5px 6px;border-radius:4px"><span style="color:#d97706">destination_value</span><span style="color:var(--text-secondary)">text</span></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span>fg_color</span><span style="color:var(--text-secondary)">text</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span>bg_color</span><span style="color:var(--text-secondary)">text</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span>dot_style</span><span style="color:var(--text-secondary)">text</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)"><span>corner_style</span><span style="color:var(--text-secondary)">text</span></div>
+        <div style="display:flex;justify-content:space-between;padding:5px 0"><span>created_at</span><span style="color:var(--text-secondary)">timestamptz</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;grid-column:1/-1">
+    <h3 style="margin:0 0 14px">Tipos de destino soportados</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:13px">
+
+      <div style="padding:12px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px">
+        <div style="font-weight:600;margin-bottom:4px">🌐 url</div>
+        <div style="color:var(--text-secondary);font-size:12px;margin-bottom:6px">Cualquier URL web</div>
+        <code style="font-size:11px;color:#0369a1">https://ejemplo.com</code>
+        <div style="margin-top:6px;font-size:11px;color:var(--text-secondary)">→ redirige directo</div>
+      </div>
+
+      <div style="padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px">
+        <div style="font-weight:600;margin-bottom:4px">📞 phone</div>
+        <div style="color:var(--text-secondary);font-size:12px;margin-bottom:6px">Número de teléfono</div>
+        <code style="font-size:11px;color:#15803d">+50688887777</code>
+        <div style="margin-top:6px;font-size:11px;color:var(--text-secondary)">→ tel:+50688887777</div>
+      </div>
+
+      <div style="padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px">
+        <div style="font-weight:600;margin-bottom:4px">💬 whatsapp</div>
+        <div style="color:var(--text-secondary);font-size:12px;margin-bottom:6px">Chat de WhatsApp</div>
+        <code style="font-size:11px;color:#15803d">+50688887777</code>
+        <div style="margin-top:6px;font-size:11px;color:var(--text-secondary)">→ wa.me/50688887777</div>
+      </div>
+
+      <div style="padding:12px;background:#fdf4ff;border:1px solid #e9d5ff;border-radius:8px">
+        <div style="font-weight:600;margin-bottom:4px">📸 instagram</div>
+        <div style="color:var(--text-secondary);font-size:12px;margin-bottom:6px">Perfil de Instagram</div>
+        <code style="font-size:11px;color:#7c3aed">@usuario</code>
+        <div style="margin-top:6px;font-size:11px;color:var(--text-secondary)">→ instagram.com/usuario</div>
+      </div>
+
+      <div style="padding:12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px">
+        <div style="font-weight:600;margin-bottom:4px">𝕏 twitter</div>
+        <div style="color:var(--text-secondary);font-size:12px;margin-bottom:6px">Perfil de X/Twitter</div>
+        <code style="font-size:11px;color:#1d4ed8">@usuario</code>
+        <div style="margin-top:6px;font-size:11px;color:var(--text-secondary)">→ x.com/usuario</div>
+      </div>
+
+      <div style="padding:12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px">
+        <div style="font-weight:600;margin-bottom:4px">💼 linkedin</div>
+        <div style="color:var(--text-secondary);font-size:12px;margin-bottom:6px">Perfil de LinkedIn</div>
+        <code style="font-size:11px;color:#1d4ed8">usuario</code>
+        <div style="margin-top:6px;font-size:11px;color:var(--text-secondary)">→ linkedin.com/in/usuario</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,129 @@
+<h2>Mockup — Crear / Editar QR</h2>
+<p class="subtitle">Editor con preview en tiempo real</p>
+
+<div class="mockup" style="max-width:900px;margin:0 auto">
+  <div class="mockup-header">SuperQR — Nuevo código QR</div>
+  <div class="mockup-body" style="padding:0;overflow:hidden">
+
+    <!-- Nav -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #e2e8f0;background:#fff">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="color:#64748b;font-size:13px;cursor:pointer">← Dashboard</span>
+        <span style="color:#cbd5e1">/</span>
+        <span style="font-weight:600;font-size:14px;color:#0f172a">Nuevo QR</span>
+      </div>
+      <button style="background:#4f46e5;color:#fff;border:none;padding:8px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">Guardar QR</button>
+    </div>
+
+    <!-- Body: two columns -->
+    <div style="display:grid;grid-template-columns:1fr 320px;min-height:520px">
+
+      <!-- Left: Form -->
+      <div style="padding:24px;border-right:1px solid #e2e8f0;display:flex;flex-direction:column;gap:20px">
+
+        <!-- Name -->
+        <div>
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Nombre del QR</label>
+          <input style="width:100%;padding:9px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;color:#0f172a;box-sizing:border-box" value="Mi Instagram" />
+        </div>
+
+        <!-- Destination type -->
+        <div>
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em">Tipo de destino</label>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px">
+            <div style="padding:8px 4px;border:2px solid #4f46e5;border-radius:8px;text-align:center;font-size:11px;background:#eef2ff;cursor:pointer">
+              <div>🌐</div><div style="color:#4f46e5;font-weight:600;margin-top:2px">URL</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>📞</div><div style="color:#64748b;margin-top:2px">Teléfono</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>💬</div><div style="color:#64748b;margin-top:2px">WhatsApp</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>✉️</div><div style="color:#64748b;margin-top:2px">Email</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>📸</div><div style="color:#64748b;margin-top:2px">Instagram</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>𝕏</div><div style="color:#64748b;margin-top:2px">Twitter</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>💼</div><div style="color:#64748b;margin-top:2px">LinkedIn</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>🎵</div><div style="color:#64748b;margin-top:2px">TikTok</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>📘</div><div style="color:#64748b;margin-top:2px">Facebook</div>
+            </div>
+            <div style="padding:8px 4px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;font-size:11px;cursor:pointer;background:#fff">
+              <div>▶️</div><div style="color:#64748b;margin-top:2px">YouTube</div>
+            </div>
+          </div>
+          <input style="width:100%;padding:9px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;color:#0f172a;box-sizing:border-box" placeholder="https://..." value="https://misitioweb.com" />
+        </div>
+
+        <!-- Customization -->
+        <div>
+          <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Personalización</label>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:6px">Color principal</div>
+              <div style="display:flex;gap:6px;align-items:center">
+                <div style="width:32px;height:32px;border-radius:6px;background:#4f46e5;border:2px solid #e2e8f0;cursor:pointer"></div>
+                <input style="flex:1;padding:7px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;font-family:monospace" value="#4F46E5" />
+              </div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:6px">Color de fondo</div>
+              <div style="display:flex;gap:6px;align-items:center">
+                <div style="width:32px;height:32px;border-radius:6px;background:#ffffff;border:2px solid #e2e8f0;cursor:pointer"></div>
+                <input style="flex:1;padding:7px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;font-family:monospace" value="#FFFFFF" />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:12px;color:#64748b;margin-bottom:8px">Estilo de módulos</div>
+            <div style="display:flex;gap:8px">
+              <div style="padding:8px 14px;border:2px solid #4f46e5;border-radius:8px;font-size:12px;background:#eef2ff;cursor:pointer;color:#4f46e5;font-weight:600">■ Cuadrado</div>
+              <div style="padding:8px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:12px;background:#fff;cursor:pointer;color:#64748b">▣ Redondeado</div>
+              <div style="padding:8px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:12px;background:#fff;cursor:pointer;color:#64748b">● Círculos</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Preview -->
+      <div style="padding:24px;background:#f8fafc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+        <div style="font-size:12px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.05em">Preview</div>
+
+        <!-- QR preview -->
+        <div style="width:160px;height:160px;background:repeating-conic-gradient(#4f46e5 0% 25%, #fff 0% 50%) 0 0/12px 12px;border-radius:8px;border:3px solid #e2e8f0"></div>
+
+        <div style="text-align:center">
+          <div style="font-size:13px;font-weight:600;color:#0f172a">Mi Instagram</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:4px">superqr.app/r/ab12cd</div>
+        </div>
+
+        <div style="display:flex;gap:8px;width:100%">
+          <button style="flex:1;padding:9px;border:1px solid #e2e8f0;border-radius:8px;font-size:12px;font-weight:600;background:#fff;cursor:pointer;color:#374151">⬇️ PNG</button>
+          <button style="flex:1;padding:9px;border:1px solid #e2e8f0;border-radius:8px;font-size:12px;font-weight:600;background:#fff;cursor:pointer;color:#374151">⬇️ SVG</button>
+        </div>
+
+        <div style="width:100%;padding:12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;font-size:11px">
+          <div style="color:#64748b;margin-bottom:4px;font-weight:600">LINK CORTO</div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <code style="flex:1;color:#4f46e5;font-size:11px">superqr.app/r/ab12cd</code>
+            <button style="padding:3px 8px;border:1px solid #e2e8f0;border-radius:4px;font-size:10px;background:#f8fafc;cursor:pointer">Copiar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

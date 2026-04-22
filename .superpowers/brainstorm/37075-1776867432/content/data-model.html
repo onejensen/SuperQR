@@ -1,0 +1,52 @@
+<h2>Modelo de Datos</h2>
+<p class="subtitle">Tablas en PostgreSQL (Supabase)</p>
+
+<div class="section" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+
+  <div style="background:var(--surface);border:2px solid #4f46e5;border-radius:12px;padding:20px">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <span style="font-size:18px">👤</span>
+      <h3 style="margin:0;color:#4f46e5">users</h3>
+      <span style="font-size:11px;color:var(--text-secondary);margin-left:auto">gestionado por Supabase Auth</span>
+    </div>
+    <div style="font-size:12px;font-family:monospace;display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:#4f46e5">id</span><span style="color:var(--text-secondary)">uuid PK</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>email</span><span style="color:var(--text-secondary)">text</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>created_at</span><span style="color:var(--text-secondary)">timestamptz</span></div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:2px solid #0891b2;border-radius:12px;padding:20px">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <span style="font-size:18px">📱</span>
+      <h3 style="margin:0;color:#0891b2">qr_codes</h3>
+    </div>
+    <div style="font-size:12px;font-family:monospace;display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:#0891b2">id</span><span style="color:var(--text-secondary)">uuid PK</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:#4f46e5">user_id</span><span style="color:var(--text-secondary)">uuid FK → users</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>name</span><span style="color:var(--text-secondary)">text</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>slug</span><span style="color:var(--text-secondary)">text UNIQUE</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>destination_url</span><span style="color:var(--text-secondary)">text</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>fg_color</span><span style="color:var(--text-secondary)">text</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>bg_color</span><span style="color:var(--text-secondary)">text</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>dot_style</span><span style="color:var(--text-secondary)">text (square/rounded/dots)</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>corner_style</span><span style="color:var(--text-secondary)">text (square/rounded)</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0"><span>created_at</span><span style="color:var(--text-secondary)">timestamptz</span></div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:2px solid #16a34a;border-radius:12px;padding:20px;grid-column:1/-1">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <span style="font-size:18px">📊</span>
+      <h3 style="margin:0;color:#16a34a">scans</h3>
+      <span style="font-size:11px;color:var(--text-secondary);margin-left:auto">un registro por cada escaneo</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:12px;font-family:monospace">
+      <div style="padding:6px 8px;background:#f0fdf4;border-radius:6px;border:1px solid #bbf7d0"><span style="color:#16a34a">id</span><br><span style="color:var(--text-secondary)">uuid PK</span></div>
+      <div style="padding:6px 8px;background:#f0fdf4;border-radius:6px;border:1px solid #bbf7d0"><span style="color:#0891b2">qr_code_id</span><br><span style="color:var(--text-secondary)">uuid FK</span></div>
+      <div style="padding:6px 8px;background:#f0fdf4;border-radius:6px;border:1px solid #bbf7d0"><span>scanned_at</span><br><span style="color:var(--text-secondary)">timestamptz</span></div>
+      <div style="padding:6px 8px;background:#f0fdf4;border-radius:6px;border:1px solid #bbf7d0"><span>country</span><br><span style="color:var(--text-secondary)">text (opcional)</span></div>
+    </div>
+  </div>
+
+</div>

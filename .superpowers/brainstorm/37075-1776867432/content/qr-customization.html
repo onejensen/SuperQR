@@ -1,0 +1,38 @@
+<h2>¿Quieres personalización visual del QR?</h2>
+<p class="subtitle">¿Qué nivel de customización necesitas para los códigos generados?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Solo QR estándar</h3>
+      <p>Código QR clásico en blanco y negro. Funcional, sin opciones de diseño.</p>
+      <div style="margin-top:12px;display:flex;justify-content:center">
+        <div style="width:80px;height:80px;background:repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 0 0/10px 10px;border:2px solid #000"></div>
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Colores personalizados</h3>
+      <p>Elegir color de primer plano y fondo. Ideal para branding básico.</p>
+      <div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
+        <div style="width:80px;height:80px;background:repeating-conic-gradient(#4f46e5 0% 25%, #fafafa 0% 50%) 0 0/10px 10px;border:2px solid #4f46e5"></div>
+        <div style="width:80px;height:80px;background:repeating-conic-gradient(#16a34a 0% 25%, #fff7ed 0% 50%) 0 0/10px 10px;border:2px solid #16a34a"></div>
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Colores + Logo central</h3>
+      <p>Colores personalizados y posibilidad de insertar un logo en el centro del QR.</p>
+      <div style="margin-top:12px;display:flex;justify-content:center">
+        <div style="position:relative;width:80px;height:80px;background:repeating-conic-gradient(#dc2626 0% 25%, #fff 0% 50%) 0 0/10px 10px;border:2px solid #dc2626">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;background:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold;color:#dc2626">QR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
