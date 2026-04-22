@@ -21,7 +21,7 @@ export function StatsChart({ data }: StatsChartProps) {
         <Tooltip
           contentStyle={{ borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 12 }}
           labelFormatter={l => `Fecha: ${l}`}
-          formatter={(v: number) => [v, 'Escaneos']}
+          formatter={(v) => [v as number, 'Escaneos']}
         />
         <Line type="monotone" dataKey="count" stroke="#4f46e5" strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
       </LineChart>

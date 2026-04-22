@@ -10,7 +10,7 @@ interface Props {
 export default async function StatsPage({ params }: Props) {
   const { id } = await params
   const [qr, stats] = await Promise.all([getQRCode(id), getQRStats(id)])
-  const dest = DESTINATION_LABELS[qr.destination_type]
+  const dest = DESTINATION_LABELS[qr.destination_type as keyof typeof DESTINATION_LABELS]
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
 
   return (
