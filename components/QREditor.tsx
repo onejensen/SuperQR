@@ -6,27 +6,22 @@ import { createQRCode, updateQRCode } from '@/lib/actions'
 import type { QRCode, DestinationType, DotStyle, CornerStyle } from '@/lib/types'
 
 const DOT_STYLES: { value: DotStyle; label: string }[] = [
-  { value: 'square',  label: '■ Cuadrado' },
-  { value: 'rounded', label: '▣ Redondeado' },
-  { value: 'dots',    label: '● Círculos' },
+  { value: 'square', label: 'Cuadrado' },
+  { value: 'rounded', label: 'Redondeado' },
+  { value: 'dots', label: 'Círculos' },
 ]
 
 const CORNER_STYLES: { value: CornerStyle; label: string }[] = [
-  { value: 'square',  label: '⬛ Cuadradas' },
-  { value: 'rounded', label: '🔵 Redondeadas' },
+  { value: 'square', label: 'Cuadradas' },
+  { value: 'rounded', label: 'Redondeadas' },
 ]
 
-interface QREditorProps {
-  qr?: QRCode
-  baseUrl: string
-}
-
-export function QREditor({ qr, baseUrl }: QREditorProps) {
+export function QREditor({ qr, baseUrl }: { qr?: QRCode; baseUrl: string }) {
   const [name, setName] = useState(qr?.name ?? '')
   const [destType, setDestType] = useState<DestinationType>(qr?.destination_type ?? 'url')
   const [destValue, setDestValue] = useState(qr?.destination_value ?? '')
-  const [fgColor, setFgColor] = useState(qr?.fg_color ?? '#000000')
-  const [bgColor, setBgColor] = useState(qr?.bg_color ?? '#ffffff')
+  const [fgColor, setFgColor] = useState(qr?.fg_color ?? '#1A1917')
+  const [bgColor, setBgColor] = useState(qr?.bg_color ?? '#F9F8F6')
   const [dotStyle, setDotStyle] = useState<DotStyle>(qr?.dot_style ?? 'square')
   const [cornerStyle, setCornerStyle] = useState<CornerStyle>(qr?.corner_style ?? 'square')
   const [isPending, startTransition] = useTransition()
@@ -38,119 +33,115 @@ export function QREditor({ qr, baseUrl }: QREditorProps) {
     e.preventDefault()
     const input = { name, destination_type: destType, destination_value: destValue, fg_color: fgColor, bg_color: bgColor, dot_style: dotStyle, corner_style: cornerStyle }
     startTransition(async () => {
-      if (qr) {
-        await updateQRCode(qr.id, input)
-      } else {
-        await createQRCode(input)
-      }
+      if (qr) await updateQRCode(qr.id, input)
+      else await createQRCode(input)
     })
   }
 
+  const section = (label: string, children: React.ReactNode) => (
+    <div>
+      <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '10px' }}>{label}</div>
+      {children}
+    </div>
+  )
+
+  const styleBtn = (selected: boolean) => ({
+    padding: '7px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: selected ? 600 : 400,
+    border: `1px solid ${selected ? 'var(--text)' : 'var(--border)'}`,
+    background: selected ? 'var(--text)' : 'var(--surface)',
+    color: selected ? '#fff' : 'var(--text-2)',
+    cursor: 'pointer', transition: 'all 0.1s', fontFamily: 'inherit'
+  })
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 min-h-[500px]">
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '16px', alignItems: 'start' }}>
+
       {/* Form */}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5 bg-white border border-gray-200 rounded-2xl p-6">
-        <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Nombre</label>
+      <form onSubmit={handleSubmit} style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '28px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+
+        {section('Nombre', (
           <input
             value={name}
             onChange={e => setName(e.target.value)}
             placeholder="Ej: Mi Instagram"
             required
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontSize: '14px', color: 'var(--text)', background: 'var(--bg)', fontFamily: 'inherit', transition: 'border-color 0.15s' }}
+            onFocus={e => e.target.style.borderColor = 'var(--text)'}
+            onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
-        </div>
+        ))}
 
-        <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Destino</label>
-          <DestinationInput
-            type={destType}
-            value={destValue}
-            onTypeChange={t => { setDestType(t); setDestValue('') }}
-            onValueChange={setDestValue}
-          />
-        </div>
+        {section('Destino', (
+          <DestinationInput type={destType} value={destValue} onTypeChange={t => { setDestType(t); setDestValue('') }} onValueChange={setDestValue} />
+        ))}
 
-        <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Colores</label>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { label: 'Principal', value: fgColor, onChange: setFgColor },
-              { label: 'Fondo',     value: bgColor, onChange: setBgColor },
-            ].map(({ label, value, onChange }) => (
+        {section('Colores', (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+            {[{ label: 'Principal', value: fgColor, onChange: setFgColor }, { label: 'Fondo', value: bgColor, onChange: setBgColor }].map(({ label, value, onChange }) => (
               <div key={label}>
-                <p className="text-xs text-gray-500 mb-1.5">{label}</p>
-                <div className="flex gap-2 items-center">
+                <div style={{ fontSize: '12px', color: 'var(--text-2)', marginBottom: '6px' }}>{label}</div>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                   <input type="color" value={value} onChange={e => onChange(e.target.value)}
-                    className="w-8 h-8 rounded cursor-pointer border border-gray-200 p-0.5" />
+                    style={{ width: '34px', height: '34px', border: '1px solid var(--border)', borderRadius: '8px', padding: '2px', cursor: 'pointer', background: 'var(--surface)' }} />
                   <input value={value} onChange={e => onChange(e.target.value)}
-                    className="flex-1 border border-gray-300 rounded-lg px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                    style={{ flex: 1, padding: '7px 10px', border: '1px solid var(--border)', borderRadius: '8px', fontSize: '12px', fontFamily: 'monospace', color: 'var(--text)', background: 'var(--surface)' }} />
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        ))}
 
-        <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Estilo de módulos</label>
-          <div className="flex gap-2">
+        {section('Módulos', (
+          <div style={{ display: 'flex', gap: '6px' }}>
             {DOT_STYLES.map(s => (
-              <button key={s.value} type="button" onClick={() => setDotStyle(s.value)}
-                className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors ${
-                  dotStyle === s.value ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-gray-200 text-gray-600 hover:border-gray-300'
-                }`}>
-                {s.label}
-              </button>
+              <button key={s.value} type="button" onClick={() => setDotStyle(s.value)} style={styleBtn(dotStyle === s.value)}>{s.label}</button>
             ))}
           </div>
-        </div>
+        ))}
 
-        <div>
-          <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Esquinas</label>
-          <div className="flex gap-2">
+        {section('Esquinas', (
+          <div style={{ display: 'flex', gap: '6px' }}>
             {CORNER_STYLES.map(s => (
-              <button key={s.value} type="button" onClick={() => setCornerStyle(s.value)}
-                className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors ${
-                  cornerStyle === s.value ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-gray-200 text-gray-600 hover:border-gray-300'
-                }`}>
-                {s.label}
-              </button>
+              <button key={s.value} type="button" onClick={() => setCornerStyle(s.value)} style={styleBtn(cornerStyle === s.value)}>{s.label}</button>
             ))}
           </div>
-        </div>
+        ))}
 
         <button type="submit" disabled={isPending}
-          className="mt-auto bg-indigo-600 text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-indigo-700 disabled:opacity-50">
+          style={{ marginTop: '4px', padding: '12px', background: isPending ? 'var(--text-3)' : 'var(--accent)', color: '#fff', border: 'none', borderRadius: 'var(--radius)', fontSize: '14px', fontWeight: 600, cursor: isPending ? 'not-allowed' : 'pointer', fontFamily: 'inherit', transition: 'background 0.15s' }}>
           {isPending ? 'Guardando...' : qr ? 'Guardar cambios' : 'Crear QR'}
         </button>
       </form>
 
-      {/* Preview panel */}
-      <div className="flex flex-col gap-4 bg-gray-50 border border-gray-200 rounded-2xl p-6 items-center justify-center">
-        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Preview</p>
-        <QRPreview url={previewUrl} fgColor={fgColor} bgColor={bgColor} dotStyle={dotStyle} cornerStyle={cornerStyle} size={200} />
+      {/* Preview */}
+      <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', position: 'sticky', top: '72px' }}>
+        <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Preview</div>
+        <div style={{ padding: '16px', background: bgColor, borderRadius: '8px', border: '1px solid var(--border)' }}>
+          <QRPreview url={previewUrl} fgColor={fgColor} bgColor={bgColor} dotStyle={dotStyle} cornerStyle={cornerStyle} size={180} />
+        </div>
+
         {qr && (
           <>
-            <div className="text-center">
-              <p className="text-sm font-semibold text-gray-900">{name || qr.name}</p>
-              <p className="text-xs text-gray-400 mt-0.5">{baseUrl}/r/{qr.slug}</p>
+            <div style={{ textAlign: 'center', width: '100%' }}>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text)', marginBottom: '2px' }}>{name || qr.name}</div>
+              <div style={{ fontSize: '11px', color: 'var(--text-3)', fontFamily: 'monospace' }}>{baseUrl}/r/{qr.slug}</div>
             </div>
-            <div className="flex gap-2 w-full">
-              <button onClick={() => download('png', qr.name)}
-                className="flex-1 py-2 border border-gray-200 rounded-lg text-xs font-semibold bg-white hover:bg-gray-50">
-                ⬇ PNG
-              </button>
-              <button onClick={() => download('svg', qr.name)}
-                className="flex-1 py-2 border border-gray-200 rounded-lg text-xs font-semibold bg-white hover:bg-gray-50">
-                ⬇ SVG
-              </button>
+
+            <div style={{ display: 'flex', gap: '6px', width: '100%' }}>
+              {(['png', 'svg'] as const).map(fmt => (
+                <button key={fmt} onClick={() => download(fmt, qr.name)}
+                  style={{ flex: 1, padding: '8px', border: '1px solid var(--border)', borderRadius: '8px', fontSize: '12px', fontWeight: 500, background: 'var(--surface)', cursor: 'pointer', color: 'var(--text)', fontFamily: 'inherit' }}>
+                  ↓ {fmt.toUpperCase()}
+                </button>
+              ))}
             </div>
-            <div className="w-full p-3 bg-white border border-gray-200 rounded-xl text-xs">
-              <p className="text-gray-400 font-semibold mb-1 uppercase tracking-wider">Link corto</p>
-              <div className="flex items-center gap-2">
-                <code className="flex-1 text-indigo-600 truncate">{baseUrl}/r/{qr.slug}</code>
+
+            <div style={{ width: '100%', background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '8px', padding: '10px 12px' }}>
+              <div style={{ fontSize: '10px', fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '4px' }}>Link corto</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <code style={{ flex: 1, fontSize: '11px', color: 'var(--brand)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontFamily: 'monospace' }}>{baseUrl}/r/{qr.slug}</code>
                 <button onClick={() => navigator.clipboard.writeText(`${baseUrl}/r/${qr.slug}`)}
-                  className="px-2 py-1 bg-gray-100 rounded text-gray-600 hover:bg-gray-200 text-xs">
+                  style={{ padding: '3px 8px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '6px', fontSize: '11px', cursor: 'pointer', color: 'var(--text-2)', fontFamily: 'inherit', flexShrink: 0 }}>
                   Copiar
                 </button>
               </div>

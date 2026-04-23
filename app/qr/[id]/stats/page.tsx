@@ -3,9 +3,7 @@ import { getQRCode, getQRStats } from '@/lib/actions'
 import { StatsChart } from '@/components/StatsChart'
 import { DESTINATION_LABELS } from '@/lib/qr/destinations'
 
-interface Props {
-  params: Promise<{ id: string }>
-}
+interface Props { params: Promise<{ id: string }> }
 
 export default async function StatsPage({ params }: Props) {
   const { id } = await params
@@ -14,36 +12,38 @@ export default async function StatsPage({ params }: Props) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className="flex items-center gap-3 mb-6">
-          <Link href="/dashboard" className="text-sm text-gray-500 hover:text-gray-700">← Dashboard</Link>
-          <span className="text-gray-300">/</span>
-          <Link href={`/qr/${id}`} className="text-sm text-gray-500 hover:text-gray-700">{qr.name}</Link>
-          <span className="text-gray-300">/</span>
-          <span className="text-sm font-semibold text-gray-900">Estadísticas</span>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
+      <nav style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)', position: 'sticky', top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0 24px', height: '56px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Link href="/dashboard" style={{ fontSize: '13px', color: 'var(--text-2)', textDecoration: 'none' }}>← Dashboard</Link>
+          <span style={{ color: 'var(--border)' }}>/</span>
+          <Link href={`/qr/${id}`} style={{ fontSize: '13px', color: 'var(--text-2)', textDecoration: 'none' }}>{qr.name}</Link>
+          <span style={{ color: 'var(--border)' }}>/</span>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text)' }}>Estadísticas</span>
+        </div>
+      </nav>
+
+      <div style={{ maxWidth: '860px', margin: '0 auto', padding: '40px 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '24px' }}>
+          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '24px' }}>
+            <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Total escaneos</div>
+            <div style={{ fontSize: '48px', fontWeight: 700, color: 'var(--brand)', letterSpacing: '-2px', lineHeight: 1 }}>{stats.total.toLocaleString()}</div>
+          </div>
+          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '24px' }}>
+            <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>Destino</div>
+            <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text)', marginBottom: '4px' }}>{dest.icon} {dest.label}</div>
+            <div style={{ fontSize: '13px', color: 'var(--text-2)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{qr.destination_value}</div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="bg-white border border-gray-200 rounded-2xl p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Total escaneos</p>
-            <p className="text-4xl font-bold text-indigo-600">{stats.total.toLocaleString()}</p>
-          </div>
-          <div className="bg-white border border-gray-200 rounded-2xl p-5">
-            <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Destino</p>
-            <p className="text-sm font-medium text-gray-900">{dest.icon} {dest.label}</p>
-            <p className="text-xs text-gray-500 mt-0.5 truncate">{qr.destination_value}</p>
-          </div>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 mb-4">
-          <p className="text-sm font-semibold text-gray-700 mb-4">Escaneos — últimos 30 días</p>
+        <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '24px', marginBottom: '12px' }}>
+          <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-2)', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Escaneos — últimos 30 días</div>
           <StatsChart data={stats.daily} />
         </div>
 
-        <div className="bg-white border border-gray-200 rounded-2xl p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-2">Link corto</p>
-          <code className="text-indigo-600 text-sm">{baseUrl}/r/{qr.slug}</code>
+        <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '16px 20px' }}>
+          <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>Link corto</div>
+          <code style={{ fontSize: '13px', color: 'var(--brand)', fontFamily: 'monospace' }}>{baseUrl}/r/{qr.slug}</code>
         </div>
       </div>
     </div>

@@ -19,8 +19,8 @@ export function DestinationInput({ type, value, onTypeChange, onValueChange }: D
   const current = DESTINATION_LABELS[type]
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="grid grid-cols-5 gap-2">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px' }}>
         {DESTINATION_TYPES.map(t => {
           const info = DESTINATION_LABELS[t]
           const selected = t === type
@@ -29,13 +29,16 @@ export function DestinationInput({ type, value, onTypeChange, onValueChange }: D
               key={t}
               type="button"
               onClick={() => onTypeChange(t)}
-              className={`flex flex-col items-center gap-1 p-2 rounded-lg border text-xs transition-colors ${
-                selected
-                  ? 'border-indigo-500 bg-indigo-50 text-indigo-700 font-semibold'
-                  : 'border-gray-200 bg-white text-gray-500 hover:border-gray-300'
-              }`}
+              style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px',
+                padding: '8px 4px', borderRadius: '8px', fontSize: '11px', fontWeight: selected ? 600 : 400,
+                border: `1px solid ${selected ? 'var(--text)' : 'var(--border)'}`,
+                background: selected ? 'var(--text)' : 'var(--surface)',
+                color: selected ? '#fff' : 'var(--text-2)',
+                cursor: 'pointer', transition: 'all 0.1s', fontFamily: 'inherit'
+              }}
             >
-              <span>{info.icon}</span>
+              <span style={{ fontSize: '14px' }}>{info.icon}</span>
               <span>{info.label}</span>
             </button>
           )
@@ -46,8 +49,10 @@ export function DestinationInput({ type, value, onTypeChange, onValueChange }: D
         value={value}
         onChange={e => onValueChange(e.target.value)}
         placeholder={current.placeholder}
-        className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         required
+        style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontSize: '14px', color: 'var(--text)', background: 'var(--surface)', fontFamily: 'inherit', transition: 'border-color 0.15s' }}
+        onFocus={e => e.target.style.borderColor = 'var(--text)'}
+        onBlur={e => e.target.style.borderColor = 'var(--border)'}
       />
     </div>
   )

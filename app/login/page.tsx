@@ -20,34 +20,58 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 w-full max-w-sm">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">SuperQR</h1>
-        <p className="text-sm text-gray-500 mb-6">Genera códigos QR dinámicos permanentes</p>
-        {sent ? (
-          <div className="text-center py-4">
-            <p className="text-gray-700 font-medium">Revisa tu correo</p>
-            <p className="text-sm text-gray-500 mt-1">Te enviamos un link de acceso a <strong>{email}</strong></p>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
+      <div style={{ width: '100%', maxWidth: '380px' }}>
+
+        {/* Logo */}
+        <div style={{ marginBottom: '48px', textAlign: 'center' }}>
+          <div style={{ fontSize: '28px', fontWeight: 700, letterSpacing: '-0.5px', color: 'var(--text)' }}>
+            Super<span style={{ color: 'var(--brand)' }}>QR</span>
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <input
-              type="email"
-              required
-              placeholder="tu@correo.com"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="bg-indigo-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 disabled:opacity-50"
-            >
-              {loading ? 'Enviando...' : 'Continuar con email'}
-            </button>
-          </form>
-        )}
+          <div style={{ marginTop: '8px', fontSize: '14px', color: 'var(--text-2)', fontWeight: 400 }}>
+            Códigos QR dinámicos permanentes
+          </div>
+        </div>
+
+        {/* Card */}
+        <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '32px' }}>
+          {sent ? (
+            <div style={{ textAlign: 'center', padding: '8px 0' }}>
+              <div style={{ fontSize: '32px', marginBottom: '16px' }}>📬</div>
+              <div style={{ fontWeight: 600, fontSize: '16px', color: 'var(--text)', marginBottom: '8px' }}>Revisa tu correo</div>
+              <div style={{ fontSize: '14px', color: 'var(--text-2)', lineHeight: 1.6 }}>
+                Enviamos un link de acceso a<br />
+                <span style={{ color: 'var(--text)', fontWeight: 500 }}>{email}</span>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--text-2)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="tu@correo.com"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--border)', borderRadius: 'var(--radius)', fontSize: '14px', color: 'var(--text)', background: 'var(--surface)', transition: 'border-color 0.15s' }}
+                  onFocus={e => e.target.style.borderColor = 'var(--text)'}
+                  onBlur={e => e.target.style.borderColor = 'var(--border)'}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                style={{ width: '100%', padding: '11px', background: loading ? 'var(--text-3)' : 'var(--accent)', color: '#fff', border: 'none', borderRadius: 'var(--radius)', fontSize: '14px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', transition: 'opacity 0.15s', fontFamily: 'inherit' }}
+              >
+                {loading ? 'Enviando...' : 'Continuar →'}
+              </button>
+            </form>
+          )}
+        </div>
+
       </div>
     </div>
   )

@@ -3,25 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #F9F8F6;
+  --surface: #FFFFFF;
+  --border: #E8E5DF;
+  --text: #1A1917;
+  --text-2: #706C67;
+  --text-3: #AEACB3;
+  --accent: #1A1917;
+  --brand: #D4691E;
+  --radius: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::selection {
+  background: var(--brand);
+  color: #fff;
+}
+
+input:focus, button:focus {
+  outline: none;
 }

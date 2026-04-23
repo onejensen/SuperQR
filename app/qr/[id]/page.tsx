@@ -1,9 +1,8 @@
+import Link from 'next/link'
 import { getQRCode } from '@/lib/actions'
 import { QREditor } from '@/components/QREditor'
 
-interface Props {
-  params: Promise<{ id: string }>
-}
+interface Props { params: Promise<{ id: string }> }
 
 export default async function EditQRPage({ params }: Props) {
   const { id } = await params
@@ -11,16 +10,18 @@ export default async function EditQRPage({ params }: Props) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex items-center gap-3 mb-6">
-          <a href="/dashboard" className="text-sm text-gray-500 hover:text-gray-700">← Dashboard</a>
-          <span className="text-gray-300">/</span>
-          <h1 className="text-lg font-bold text-gray-900">{qr.name}</h1>
-          <a href={`/qr/${id}/stats`} className="ml-auto text-sm text-indigo-600 hover:text-indigo-700 font-medium">
-            📊 Ver estadísticas
-          </a>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
+      <nav style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)', position: 'sticky', top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 24px', height: '56px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Link href="/dashboard" style={{ fontSize: '13px', color: 'var(--text-2)', textDecoration: 'none' }}>← Dashboard</Link>
+          <span style={{ color: 'var(--border)' }}>/</span>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text)', flex: 1 }}>{qr.name}</span>
+          <Link href={`/qr/${id}/stats`} style={{ fontSize: '13px', fontWeight: 500, color: 'var(--brand)', textDecoration: 'none' }}>
+            Ver estadísticas →
+          </Link>
         </div>
+      </nav>
+      <div style={{ maxWidth: '960px', margin: '0 auto', padding: '32px 24px' }}>
         <QREditor qr={qr} baseUrl={baseUrl} />
       </div>
     </div>

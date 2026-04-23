@@ -5,43 +5,50 @@ import { QRCard } from '@/components/QRCard'
 export default async function DashboardPage() {
   const qrCodes = await getQRCodes()
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!
-
   const totalScans = qrCodes.reduce((sum, q) => sum + q.scan_count, 0)
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1 className="text-xl font-bold text-gray-900">SuperQR</h1>
-            <p className="text-sm text-gray-500 mt-0.5">{qrCodes.length} código{qrCodes.length !== 1 ? 's' : ''} activo{qrCodes.length !== 1 ? 's' : ''}</p>
-          </div>
-          <Link href="/create"
-            className="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-semibold hover:bg-indigo-700">
+    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
+      {/* Nav */}
+      <nav style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)', position: 'sticky', top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '18px', fontWeight: 700, letterSpacing: '-0.3px' }}>
+            Super<span style={{ color: 'var(--brand)' }}>QR</span>
+          </span>
+          <Link
+            href="/create"
+            style={{ background: 'var(--accent)', color: '#fff', padding: '7px 16px', borderRadius: 'var(--radius)', fontSize: '13px', fontWeight: 600, textDecoration: 'none', letterSpacing: '0.01em' }}
+          >
             + Nuevo QR
           </Link>
         </div>
+      </nav>
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="bg-white border border-gray-200 rounded-2xl p-4">
-            <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Total QRs</p>
-            <p className="text-3xl font-bold text-gray-900">{qrCodes.length}</p>
-          </div>
-          <div className="bg-white border border-gray-200 rounded-2xl p-4">
-            <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Total escaneos</p>
-            <p className="text-3xl font-bold text-indigo-600">{totalScans.toLocaleString()}</p>
-          </div>
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '40px 24px' }}>
+
+        {/* Stats */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '32px' }}>
+          {[
+            { label: 'Códigos activos', value: qrCodes.length, highlight: false },
+            { label: 'Total escaneos', value: totalScans.toLocaleString(), highlight: true },
+          ].map(stat => (
+            <div key={stat.label} style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '20px 24px' }}>
+              <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>{stat.label}</div>
+              <div style={{ fontSize: '32px', fontWeight: 700, color: stat.highlight ? 'var(--brand)' : 'var(--text)', letterSpacing: '-1px', lineHeight: 1 }}>{stat.value}</div>
+            </div>
+          ))}
         </div>
 
+        {/* List */}
         {qrCodes.length === 0 ? (
-          <div className="bg-white border border-gray-200 rounded-2xl p-12 text-center">
-            <p className="text-gray-400 text-sm">No tienes códigos QR aún</p>
-            <Link href="/create" className="mt-3 inline-block text-indigo-600 text-sm font-medium hover:text-indigo-700">
+          <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '64px 24px', textAlign: 'center' }}>
+            <div style={{ fontSize: '13px', color: 'var(--text-3)', marginBottom: '16px' }}>No tienes códigos QR aún</div>
+            <Link href="/create" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--brand)', textDecoration: 'none' }}>
               Crear tu primer QR →
             </Link>
           </div>
         ) : (
-          <div className="flex flex-col gap-3">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {qrCodes.map(qr => <QRCard key={qr.id} qr={qr} baseUrl={baseUrl} />)}
           </div>
         )}
