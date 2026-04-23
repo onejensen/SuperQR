@@ -21,7 +21,10 @@ export async function GET(
     .single()
 
   if (error || !data) {
-    return new NextResponse('QR code no encontrado', { status: 404 })
+    return new NextResponse(
+      `QR code no encontrado. Slug: ${slug}. Error: ${error ? JSON.stringify(error) : 'data null'}`,
+      { status: 404 }
+    )
   }
 
   supabase
